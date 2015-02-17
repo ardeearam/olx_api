@@ -2,9 +2,12 @@
 An attempt to expose OLX.ph ito an API.
 
 ```
-require 'olx-api'
+require 'olx_api'
 
 olx = OlxApi.new("olx-username", "olx-password")
+
+#If username and password is not set, it will find ~/.olx_api.yml, and retrieve
+#the credentials from there.
 
 olx.posts.each do |post|
   puts post.title

@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = OlxApi::VERSION
   spec.authors       = ["Ardee Aram (Codebox)"]
   spec.email         = ["ardee.aram@galoretv.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{OLX API exposes http://olx.com.ph as a Ruby API to make the site programmable.}
+  spec.description   = %q{}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake", "~> 10.0"
+  
+  spec.add_dependency 'rest-client', '~> 1.7.2'
+  spec.add_dependency 'nokogiri', '~> 1.6.6.2'
 end
