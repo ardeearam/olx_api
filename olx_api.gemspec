@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require './version'
+require 'olx_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "."
-  spec.version       = .::VERSION
+  spec.name          = "olx_api"
+  spec.version       = OlxApi::VERSION
   spec.authors       = ["Ardee Aram (Codebox)"]
   spec.email         = ["ardee.aram@galoretv.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
