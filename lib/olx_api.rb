@@ -8,6 +8,7 @@ require 'watir'
 class OlxApi
 
   attr_accessor :logged_in
+  attr_accessor :browser #testing only
     
   def initialize(username, password)
       
@@ -21,14 +22,24 @@ class OlxApi
     @browser.text_field(:name => "password").set password
     @browser.button(:name => "loginSubmit").click
     
+    sleep 2
 
     if @browser.title == "(102) Member Page - Philippines - OLX.ph" 
         @logged_in =  true
+ 
+        #Click here if your browser does not automatically redirect you to the next page        
+        @browser.links.first.click
+        
+        user_id = @browser.link(class:"accountUserName").text
+        
+        #user_id = user_id[0..user_id.length - 2]
+        #user_id = ""
+        
     else
         @logged_in = false
     end
     
-     puts({logged_in: @logged_in}.to_json)
+     puts({logged_in: @logged_in, user_id: user_id}.to_json)
         
   end
   
