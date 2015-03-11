@@ -24,15 +24,14 @@ class OlxApi
     
     sleep 2
 
-    if @browser.title == "(102) Member Page - Philippines - OLX.ph" 
+    if (/\(\d+\) Member Page - Philippines - OLX\.ph/ =~ @browser.title) 
         @logged_in =  true
  
         #Click here if your browser does not automatically redirect you to the next page        
         @browser.links.first.click
         
-        user_id = @browser.link(class:"accountUserName").text
-        
-        #user_id = user_id[0..user_id.length - 2]
+        user_id = @browser.link(class:"accountUserName").text.strip
+        user_id = user_id[0..user_id.length - 3]
         #user_id = ""
         
     else
@@ -44,7 +43,8 @@ class OlxApi
   end
   
   def active_ads
-      RestClient.get(api_endpoint(:active_ads), {cookies: @cookies})
+      @browser.goto(api_endpoint(:active_ads))
+      #ads = @browser.tdslinks(class:"listingAdTitle").map{|x| {title: x.text, url: x.href}}
   end
   
   
