@@ -1,5 +1,5 @@
 # olx-api
-An attempt to expose OLX.ph ito an API.
+OlxApi exposes OLX.ph ito a programmable API.
 
 ```
 require 'olx_api'
