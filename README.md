@@ -6,8 +6,6 @@ OlxApi exposes OLX.ph ito a programmable API.
 require 'olx_api'
 
 olx = OlxApi.new("olx-username", "olx-password")
-#If username and password is not set, it will find ~/.olx_api.yml, and retrieve
-#the credentials from there.
 ```
 ## Get Active Ads
 ```
