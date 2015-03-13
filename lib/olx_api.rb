@@ -28,7 +28,7 @@ class OlxApi
         @logged_in =  true
  
         #Click here if your browser does not automatically redirect you to the next page        
-        @browser.links.first.click
+        @browser.links.first.when_present.click
         
         user_id = @browser.link(class:"accountUserName").text.strip
         user_id = user_id[0..user_id.length - 3]
@@ -39,16 +39,22 @@ class OlxApi
     end
     
      puts({logged_in: @logged_in, user_id: user_id}.to_json)
-        
   end
   
   def active_ads
       @browser.goto(api_endpoint(:active_ads))
-      #ads = @browser.tdslinks(class:"listingAdTitle").map{|x| {title: x.text, url: x.href}}
+      @browser.tds(class: "aditemtitle").each do |td|
+        title_link = td.link(class: "listingAdTitle")
+        puts "TITLE:" + title_link.text
+        puts "URL:" + title_link.href
+        
+        price = td.span(class: "adPrice").text
+        puts "PRICE:" + price
+        
+      end
   end
   
-  
-  
+   
   def api_endpoint(action)
       
       url = "https://www.olx.ph/index.php"
