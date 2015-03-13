@@ -1,6 +1,7 @@
 # olx-api
 OlxApi exposes OLX.ph ito a programmable API.
 
+## Logging in
 ```
 require 'olx_api'
 
@@ -8,11 +9,11 @@ olx = OlxApi.new("olx-username", "olx-password")
 #If username and password is not set, it will find ~/.olx_api.yml, and retrieve
 #the credentials from there.
 ```
-
+## Get Active Ads
 ```
 olx.active_ads
 ```
-Output
+### Output
 ```
 [
   {"title":"The Sandman: Book of Dreams - Neil Gaiman, et. al","url":"http://www.olx.ph/index.php/view+classifieds/id/70127217/The+Sandman%3A+Book+of+Dreams+-+Neil+Gaiman%2C+et.+al?event=Search+Ranking,Position,1-1,1","price":"₱ 170.00"},
@@ -24,7 +25,7 @@ Output
   {"title":"Steven's Bride (Sweet Valley High #83) by Francine Pascal","url":"http://www.olx.ph/index.php/view+classifieds/id/68665642/Steven%27s+Bride+%28Sweet+Valley+High+%2383%29+by+Francine+Pascal?event=Search+Ranking,Position,1-7,7","price":"₱ 50.00"}
 ]
 ```
-
+### Create New Post
 ```
 olx.create_post({title: "Harry Potter and the Half-blood prince", price: 200})
 ```
